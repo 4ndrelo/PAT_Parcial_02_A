@@ -1,49 +1,41 @@
 #include "Ejercicio03.h"
 
-MinStack::MinStack()
-{
+
+MinStack::MinStack() {
+    cima = nullptr; 
 }
 
-void MinStack::push(int value)
-{
-    mainStack.push_back(value);
-
-   
-    if (minStack.empty() || value <= minStack.back()) 
-    {
-        minStack.push_back(value);
+void MinStack::push(int value) {
+    if (cima == nullptr) {
+        cima = new Nodo(value, value, nullptr);
+    }
+    else {
+        cima = new Nodo(value, min(value, cima->minimo), cima);
     }
 }
 
-void MinStack::pop()
-{
-    if (!mainStack.empty()) {
-      
-        if (mainStack.back() == minStack.back()) {
-            minStack.pop_back();
-        }
-        mainStack.pop_back();
+void MinStack::pop() {
+    if (cima != nullptr) {
+        Nodo* temp = cima;
+        cima = cima->siguiente;
+        delete temp;
     }
 }
 
-int MinStack::top()
-{
-    if (!mainStack.empty()) {
-        return mainStack.back();
+int MinStack::top() {
+    if (cima != nullptr) {
+        return cima->valor;
     }
-    return INT_MIN; 
+    else {
+        return 0;
+    }
 }
 
-int MinStack::getMin()
-{
-    if (!minStack.empty()) {
-        return minStack.back();
+int MinStack::getMin() {
+    if (cima != nullptr) {
+        return cima->minimo;
     }
-    return INT_MIN; 
-
+    else {
+        return 0;
+    }
 }
-
-private:
-    std::vector<int> mainStack; 
-    std::vector<int> minStack;  
-};
