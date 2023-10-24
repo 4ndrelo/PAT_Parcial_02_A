@@ -2,23 +2,21 @@
 
 int Ejercicio02::countStudents(vector<char>* students, vector<char>* sandwiches)
 {
-    int studentIndex = 0;
-    int sandwichIndex = 0;
+    int studentIndex = 0;   
+    int sandwichIndex = 0;  
 
-    while (studentIndex < students.size() && sandwichIndex < sandwiches.size()) {
-        if (students[studentIndex] == sandwiches[sandwichIndex]) {
-    
+    while (studentIndex < students->size() && sandwichIndex < sandwiches->size()) {
+        if ((*students)[studentIndex] == (*sandwiches)[sandwichIndex]) {
+      
+            studentIndex++;
+            sandwichIndex++;
+        }
+        else {
+          
             studentIndex++;
         }
-        sandwichIndex++;
     }
 
     
-    vector<char> studentsDidNotEat;
-    while (studentIndex < students.size()) {
-        studentsDidNotEat.push_back(students[studentIndex]);
-        studentIndex++;
-    }
-
-    return studentsDidNotEat;
+    return students->size() - studentIndex;
 }
