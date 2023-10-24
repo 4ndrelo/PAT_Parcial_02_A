@@ -10,7 +10,7 @@ void MinStack::push(int value) {
         cima = new Nodo(value, value, nullptr);
     }
     else {
-        cima = new Nodo(value, min(value, cima->minimo), cima);
+        cima = new Nodo(value, m(value, cima->minimo), cima);
     }
 }
 

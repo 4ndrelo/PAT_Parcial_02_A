@@ -1,9 +1,11 @@
 #pragma once
-struct Nodo {
+struct Nodo 
+{
     int valor;
     int minimo;
     Nodo* siguiente;
-    Nodo(int v, int m, Nodo* s) {
+    Nodo(int v, int m, Nodo* s) 
+    {
         valor = v;
         minimo = m;
         siguiente = s;
@@ -25,5 +27,5 @@ public:
 private:
     Nodo* cima; 
 };
-};
+
 

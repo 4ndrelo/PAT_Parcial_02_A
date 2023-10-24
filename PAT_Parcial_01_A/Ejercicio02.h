@@ -7,6 +7,10 @@ using std::vector;
 class Ejercicio02
 {
 public:
-	int countStudents(vector<char>* students, vector<char>* sandwiches);
+    Sandwiches(const char* students, const char* sandwiches);
+    int countStudentsNotEaten();
+private:
+    char* students;
+    char* sandwiches;
 };
 
