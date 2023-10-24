@@ -1,4 +1,14 @@
 #pragma once
+struct Nodo {
+    int valor;
+    int minimo;
+    Nodo* siguiente;
+    Nodo(int v, int m, Nodo* s) {
+        valor = v;
+        minimo = m;
+        siguiente = s;
+    }
+};
 class MinStack
 {
 public:
@@ -11,5 +21,9 @@ public:
 	int top();
 
 	int getMin();
+
+private:
+    Nodo* cima; 
+};
 };
 
